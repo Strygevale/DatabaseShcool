@@ -1,0 +1,35 @@
+﻿@model IEnumerable<StrygevaleDatabase.Models.Journal>
+
+<p>
+    @Html.ActionLink("Создать новый", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Оценка")
+        </th>
+    
+        <th>
+            @Html.DisplayName("ФИО")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.grade, "Details", new { id = item.id_journal })
+        </td>
+       
+        <td>
+            Html.ActionLink(item.Student.fio, "Details", new { id = item.id_journal })
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.id_journal }) |
+            
+            @Html.ActionLink("Удалить", "Delete", new { id=item.id_journal })
+        </td>
+    </tr>
+}
+
+</table>

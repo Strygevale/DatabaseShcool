@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "Queries";
+}
+
+<h2>Запросы</h2>
+@using (Html.BeginForm("Query5", "Home"))
+{
+    <li>
+        Предметы
+
+        <input type="submit" value="Выполнить" class="btn btn-default" />
+    </li>
+}
+@using (Html.BeginForm("Query1", "Home"))
+{
+    <li>
+        ФИО учителей
+
+        <input type="submit" value="Выполнить" class="btn btn-default" />
+    </li>
+}
+@using (Html.BeginForm("Query6", "Home"))
+{
+    <li>
+        Введите фамилию учителя
+        <input type="text" name="txtbox6" class="form-control" />
+        <input type="submit" value="Выполнить" class="btn btn-default" />
+    </li>
+}
+@using (Html.BeginForm("Query2", "Home"))
+{
+    <li>
+        Введите оценку ученика.
+        <input type="text" name="txtbox6" class="form-control" />
+        <input type="submit" value="Выполнить" class="btn btn-default" />
+    </li>
+}
+@using (Html.BeginForm("Query3", "Home"))
+{
+    <li>
+        Название класса и предмет.
+
+        <input type="submit" value="Выполнить" class="btn btn-default" />
+    </li>
+}
+@using (Html.BeginForm("Query4", "Home"))
+{
+    <li>
+        Введите фамилию ученика.
+        <input type="text" name="txtbox6" class="form-control" />
+        <input type="submit" value="Выполнить" class="btn btn-default" />
+    </li>
+}
+@using (Html.BeginForm("Query9", "Home"))
+{
+    <li>
+        Введите название предмета чтобы увидеть дату урока.
+        <input type="text" name="txtbox6" class="form-control" />
+        <input type="submit" value="Выполнить" class="btn btn-default" />
+    </li>
+}
+@using (Html.BeginForm("Query8", "Home"))
+{
+    <li>
+        Все ученики и их оценки.
+
+        <input type="submit" value="Выполнить" class="btn btn-default" />
+    </li>
+}
+@using (Html.BeginForm("Query7", "Home"))
+{
+    <li>
+        Предметы которые ведут учителя.
+
+        <input type="submit" value="Выполнить" class="btn btn-default" />
+    </li>
+}
+@using (Html.BeginForm("Query10", "Home"))
+{
+    <li>
+        Введите название класса.
+        <input type="text" name="txtbox6" class="form-control" />
+        <input type="submit" value="Выполнить" class="btn btn-default" />
+    </li>
+}
+
+
+

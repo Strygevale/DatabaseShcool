@@ -1,0 +1,40 @@
+﻿@model StrygevaleDatabase.Models.Teacher
+
+@{
+    ViewBag.Title = "Удалить";
+}
+
+<h2>Удалить</h2>
+
+<h3>Вы действительно хотите удалить?</h3>
+<div>
+    <h4>Учителя</h4>
+    <hr/>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("ФИО")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fio)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Специальность")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.specialty)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад ", "Index")
+        </div>
+    }
+</div>

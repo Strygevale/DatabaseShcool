@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище schoolModel" Provider="Npgsql" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="id_class" />
+    </Key>
+    <Property Name="id_class" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="class_name" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Journal">
+    <Key>
+      <PropertyRef Name="id_journal" />
+    </Key>
+    <Property Name="id_journal" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_lesson" Type="int4" Nullable="false" />
+    <Property Name="grade" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="id_student" Type="int4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Lesson">
+    <Key>
+      <PropertyRef Name="id_lesson" />
+    </Key>
+    <Property Name="id_lesson" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_subject" Type="int4" Nullable="false" />
+    <Property Name="id_class" Type="int4" Nullable="false" />
+    <Property Name="id_teacher" Type="int4" Nullable="false" />
+    <Property Name="data" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="id_student" />
+    </Key>
+    <Property Name="id_student" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fio" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="id_class" Type="int4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="id_subject" />
+    </Key>
+    <Property Name="id_subject" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="subject_name" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="id_teacher" />
+    </Key>
+    <Property Name="id_teacher" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fio" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="specialty" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_id_class">
+    <End Role="Class" Type="Self.Class" Multiplicity="1" />
+    <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="id_class" />
+      </Principal>
+      <Dependent Role="Lesson">
+        <PropertyRef Name="id_class" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_id_class1">
+    <End Role="Class" Type="Self.Class" Multiplicity="1" />
+    <End Role="Students" Type="Self.Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="id_class" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="id_class" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_id_lesson">
+    <End Role="Lesson" Type="Self.Lesson" Multiplicity="1" />
+    <End Role="Journal" Type="Self.Journal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lesson">
+        <PropertyRef Name="id_lesson" />
+      </Principal>
+      <Dependent Role="Journal">
+        <PropertyRef Name="id_lesson" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_id_student">
+    <End Role="Students" Type="Self.Students" Multiplicity="1" />
+    <End Role="Journal" Type="Self.Journal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="id_student" />
+      </Principal>
+      <Dependent Role="Journal">
+        <PropertyRef Name="id_student" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_id_subject">
+    <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+    <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="id_subject" />
+      </Principal>
+      <Dependent Role="Lesson">
+        <PropertyRef Name="id_subject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_id_teacher">
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+    <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="id_teacher" />
+      </Principal>
+      <Dependent Role="Lesson">
+        <PropertyRef Name="id_teacher" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище schoolModelContainer">
+    <EntitySet Name="Class" EntityType="Self.Class" Schema="public" store:Type="Tables" />
+    <EntitySet Name="Journal" EntityType="Self.Journal" Schema="public" store:Type="Tables" />
+    <EntitySet Name="Lesson" EntityType="Self.Lesson" Schema="public" store:Type="Tables" />
+    <EntitySet Name="Students" EntityType="Self.Students" Schema="public" store:Type="Tables" />
+    <EntitySet Name="Subject" EntityType="Self.Subject" Schema="public" store:Type="Tables" />
+    <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="public" store:Type="Tables" />
+    <AssociationSet Name="fk_id_class" Association="Self.fk_id_class">
+      <End Role="Class" EntitySet="Class" />
+      <End Role="Lesson" EntitySet="Lesson" />
+    </AssociationSet>
+    <AssociationSet Name="fk_id_class1" Association="Self.fk_id_class1">
+      <End Role="Class" EntitySet="Class" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="fk_id_lesson" Association="Self.fk_id_lesson">
+      <End Role="Lesson" EntitySet="Lesson" />
+      <End Role="Journal" EntitySet="Journal" />
+    </AssociationSet>
+    <AssociationSet Name="fk_id_student" Association="Self.fk_id_student">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="Journal" EntitySet="Journal" />
+    </AssociationSet>
+    <AssociationSet Name="fk_id_subject" Association="Self.fk_id_subject">
+      <End Role="Subject" EntitySet="Subject" />
+      <End Role="Lesson" EntitySet="Lesson" />
+    </AssociationSet>
+    <AssociationSet Name="fk_id_teacher" Association="Self.fk_id_teacher">
+      <End Role="Teacher" EntitySet="Teacher" />
+      <End Role="Lesson" EntitySet="Lesson" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

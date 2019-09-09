@@ -1,0 +1,71 @@
+﻿@model IEnumerable<StrygevaleDatabase.Models.Lesson>
+
+@{
+    ViewBag.Title = "Урок";
+}
+
+<h2>Урок</h2>
+
+<p>
+    @Html.ActionLink("Создать новый", "Create")
+</p>
+@using (Html.BeginForm("Search", "Lessons", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <div class="col-md-10">
+            <label for="query">
+                <input type="text" name="search" class="form-control" />
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            <input type="submit" value="Поиск" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Дата")
+        </th>
+        <th>
+            @Html.DisplayName("Название класса")
+        </th>
+        <th>
+            @Html.DisplayName("ФИО")
+        </th>
+        <th>
+            @Html.DisplayName("Название предмета")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.data)
+        </td>
+       
+        <td>
+            @Html.ActionLink(item.Class.class_name, "Details", new { id = item.id_lesson })
+            </td>
+        <td>
+            @Html.ActionLink(item.Teacher.fio, "Details", new { id = item.id_lesson })
+        </td>
+        <td>
+            @Html.ActionLink(item.Subject.subject_name, "Details", new { id = item.id_lesson })
+        </td>
+       
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id = item.id_lesson }) |
+            
+            @Html.ActionLink("Удалить", "Delete", new { id = item.id_lesson })
+        </td>
+    </tr>
+    }
+
+</table>

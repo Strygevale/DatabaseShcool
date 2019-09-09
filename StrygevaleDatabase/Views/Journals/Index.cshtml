@@ -1,0 +1,60 @@
+﻿@model IEnumerable<StrygevaleDatabase.Models.Journal>
+
+@{
+    ViewBag.Title = "Журнал";
+}
+
+<h2>Журнал</h2>
+
+<p>
+    @Html.ActionLink("Создать новый", "Create")
+</p>
+@using (Html.BeginForm("Search", "Journals", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <div class="col-md-10">
+            <label for="query">
+                <input type="text" name="search" class="form-control" />
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            <input type="submit" value="Поиск" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Оценка")
+        </th>
+        <th>
+            @Html.DisplayName("ФИО")
+        </th>
+
+
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+    <tr>
+
+        <td>
+            @Html.ActionLink(item.grade, "Details", new { id = item.id_journal })
+        </td>
+        <td>
+            @Html.ActionLink(item.Student.fio, "Details", new { id = item.id_journal })
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id = item.id_journal }) |
+
+            @Html.ActionLink("Удалить", "Delete", new { id = item.id_journal })
+        </td>
+    </tr>
+    }
+
+</table>

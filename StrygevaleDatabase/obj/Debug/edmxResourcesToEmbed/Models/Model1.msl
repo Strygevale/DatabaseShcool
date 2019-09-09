@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище schoolModelContainer" CdmEntityContainer="schoolEntities">
+    <EntitySetMapping Name="Classes">
+      <EntityTypeMapping TypeName="schoolModel.Class">
+        <MappingFragment StoreEntitySet="Class">
+          <ScalarProperty Name="id_class" ColumnName="id_class" />
+          <ScalarProperty Name="class_name" ColumnName="class_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Journals">
+      <EntityTypeMapping TypeName="schoolModel.Journal">
+        <MappingFragment StoreEntitySet="Journal">
+          <ScalarProperty Name="id_journal" ColumnName="id_journal" />
+          <ScalarProperty Name="id_lesson" ColumnName="id_lesson" />
+          <ScalarProperty Name="grade" ColumnName="grade" />
+          <ScalarProperty Name="id_student" ColumnName="id_student" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lessons">
+      <EntityTypeMapping TypeName="schoolModel.Lesson">
+        <MappingFragment StoreEntitySet="Lesson">
+          <ScalarProperty Name="id_lesson" ColumnName="id_lesson" />
+          <ScalarProperty Name="id_subject" ColumnName="id_subject" />
+          <ScalarProperty Name="id_class" ColumnName="id_class" />
+          <ScalarProperty Name="id_teacher" ColumnName="id_teacher" />
+          <ScalarProperty Name="data" ColumnName="data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="schoolModel.Student">
+        <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="id_student" ColumnName="id_student" />
+          <ScalarProperty Name="fio" ColumnName="fio" />
+          <ScalarProperty Name="id_class" ColumnName="id_class" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subjects">
+      <EntityTypeMapping TypeName="schoolModel.Subject">
+        <MappingFragment StoreEntitySet="Subject">
+          <ScalarProperty Name="id_subject" ColumnName="id_subject" />
+          <ScalarProperty Name="subject_name" ColumnName="subject_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teachers">
+      <EntityTypeMapping TypeName="schoolModel.Teacher">
+        <MappingFragment StoreEntitySet="Teacher">
+          <ScalarProperty Name="id_teacher" ColumnName="id_teacher" />
+          <ScalarProperty Name="fio" ColumnName="fio" />
+          <ScalarProperty Name="specialty" ColumnName="specialty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

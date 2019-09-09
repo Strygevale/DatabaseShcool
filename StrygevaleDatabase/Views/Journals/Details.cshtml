@@ -1,0 +1,42 @@
+﻿@model StrygevaleDatabase.Models.Journal
+
+@{
+    ViewBag.Title = "Подробно";
+}
+
+<h2>Подробно</h2>
+
+<div>
+    <h4>Журнал</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Оценка")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.grade)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Номер урока")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lesson.id_lesson)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("ФИО")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.fio)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.id_journal }) |
+    @Html.ActionLink("Назад", "Index")
+</p>

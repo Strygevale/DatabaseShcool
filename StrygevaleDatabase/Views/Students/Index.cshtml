@@ -1,0 +1,58 @@
+﻿@model IEnumerable<StrygevaleDatabase.Models.Student>
+
+@{
+    ViewBag.Title = "Ученики";
+}
+
+<h2>Ученики</h2>
+
+<p>
+    @Html.ActionLink("Создать новый", "Create")
+</p>
+@using (Html.BeginForm("Search", "Students", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <div class="col-md-10">
+            <label for="query">
+                <input type="text" name="search" class="form-control" />
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            <input type="submit" value="Поиск" class="btn btn-default" />
+        </div>
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Название класса")
+        </th>
+        <th>
+            @Html.DisplayName("ФИО")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        
+        <td>
+            @Html.ActionLink(item.Class.class_name, "Details", new { id = item.id_student })
+        </td>
+        <td>
+            @Html.ActionLink(item.fio, "Details", new { id = item.id_student })
+           
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id = item.id_student }) |
+          
+            @Html.ActionLink("Удалить", "Delete", new { id = item.id_student })
+        </td>
+    </tr>
+    }
+
+</table>

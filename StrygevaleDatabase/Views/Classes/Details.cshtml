@@ -1,0 +1,26 @@
+﻿@model StrygevaleDatabase.Models.Class
+
+@{
+    ViewBag.Title = "Подробно";
+}
+
+<h2>Подробно</h2>
+
+<div>
+    <h4>Класс</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Имя класса")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.class_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.id_class }) |
+    @Html.ActionLink("Назад", "Index")
+</p>

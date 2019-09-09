@@ -1,0 +1,27 @@
+﻿@model IEnumerable<StrygevaleDatabase.Models.Subject>
+
+<p>
+    @Html.ActionLink("Создать новый", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Название предмета")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.subject_name, "Details", new { id = item.id_subject })
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.id_subject }) |
+            
+            @Html.ActionLink("Удалить", "Delete", new { id=item.id_subject })
+        </td>
+    </tr>
+}
+
+</table>

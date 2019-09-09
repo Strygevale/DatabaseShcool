@@ -1,0 +1,50 @@
+﻿@model StrygevaleDatabase.Models.Lesson
+
+@{
+    ViewBag.Title = "Подробно";
+}
+
+<h2>Подробно</h2>
+
+<div>
+    <h4>Урок</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Дата")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Имя класса")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Class.class_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Название предмета")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subject.subject_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("ФИО")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teacher.fio)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.id_lesson }) |
+    @Html.ActionLink("Назад", "Index")
+</p>
